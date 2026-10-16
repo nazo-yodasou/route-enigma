@@ -1513,7 +1513,7 @@ class Component extends DCLogic {
       else if (placeDone) {
         // 謎の場所に正解した後は「スタート」の入力を受け付ける
         const isStartWord = START_WORDS.map(norm).indexOf(norm(val)) !== -1;
-        r = !isStartWord ? 'wrong' : (Date.now() < START_AT && !this.props.previewPuzzles ? 'early' : 'start');
+        r = !isStartWord ? 'wrong' : (Date.now() < START_AT ? 'early' : 'start');
       } else {
         const key = cur >= total ? PLACE_ANSWERS : PUZZLE_ANSWERS[cur];
         const ans = [].concat(key || []).map(norm).filter(Boolean);
@@ -1668,7 +1668,7 @@ class Component extends DCLogic {
     };
   }
 }
-dcMount(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), {"accent": "#FFE100", "previewPuzzles": /[?&]preview=1(&|$)/.test(location.search)});
+dcMount(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), {"accent": "#FFE100", "previewPuzzles": false});
 </script>
 </body>
 </html>
