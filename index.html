@@ -1668,7 +1668,7 @@ class Component extends DCLogic {
     };
   }
 }
-dcMount(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), {"accent": "#FFE100", "previewPuzzles": false});
+dcMount(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), {"accent": "#FFE100", "previewPuzzles": /[?&]preview=1(&|$)/.test(location.search)});
 </script>
 </body>
 </html>
