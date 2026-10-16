@@ -1513,7 +1513,7 @@ class Component extends DCLogic {
       else if (placeDone) {
         // 謎の場所に正解した後は「スタート」の入力を受け付ける
         const isStartWord = START_WORDS.map(norm).indexOf(norm(val)) !== -1;
-        r = !isStartWord ? 'wrong' : (Date.now() < START_AT ? 'early' : 'start');
+        r = !isStartWord ? 'wrong' : (Date.now() < START_AT && !this.props.previewPuzzles ? 'early' : 'start');
       } else {
         const key = cur >= total ? PLACE_ANSWERS : PUZZLE_ANSWERS[cur];
         const ans = [].concat(key || []).map(norm).filter(Boolean);
